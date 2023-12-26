@@ -1,0 +1,75 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.8": {
+      "Cognex.InSight.Web/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "compile": {
+          "bin/placeholder/Cognex.InSight.Web.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Cognex.InSight.Web.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Cognex.InSight.Web/1.0.0": {
+      "type": "project",
+      "path": "../Cognex.InSight.Web/Cognex.InSight.Web.csproj",
+      "msbuildProject": "../Cognex.InSight.Web/Cognex.InSight.Web.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.8": [
+      "Cognex.InSight.Web >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\minhchau.nguyen\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\minhchau.nguyen\\Desktop\\ST_App\\OCR_Camera_Printer\\SDK\\Cognex.InSight.Web.Controls\\Cognex.InSight.Web.Controls.csproj",
+      "projectName": "Cognex.InSight.Web.Controls",
+      "projectPath": "C:\\Users\\minhchau.nguyen\\Desktop\\ST_App\\OCR_Camera_Printer\\SDK\\Cognex.InSight.Web.Controls\\Cognex.InSight.Web.Controls.csproj",
+      "packagesPath": "C:\\Users\\minhchau.nguyen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\minhchau.nguyen\\Desktop\\ST_App\\OCR_Camera_Printer\\SDK\\Cognex.InSight.Web.Controls\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\minhchau.nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net48"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net48": {
+          "targetAlias": "net48",
+          "projectReferences": {
+            "C:\\Users\\minhchau.nguyen\\Desktop\\ST_App\\OCR_Camera_Printer\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj": {
+              "projectPath": "C:\\Users\\minhchau.nguyen\\Desktop\\ST_App\\OCR_Camera_Printer\\SDK\\Cognex.InSight.Web\\Cognex.InSight.Web.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net48": {
+        "targetAlias": "net48",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

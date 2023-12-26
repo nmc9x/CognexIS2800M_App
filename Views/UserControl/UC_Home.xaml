@@ -1,0 +1,618 @@
+﻿<UserControl
+    x:Class="OCR_Camera_Printer.Views.UC_Home"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:OCR_Camera_Printer.Views"
+    xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+    xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+    d:DesignHeight="1080"
+    d:DesignWidth="1920"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <local:NumToVisConv x:Key="OptToVis" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid x:Name="GridMain">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid
+                x:Name="GridNav"
+                HorizontalAlignment="Stretch"
+                Background="#00B0ED">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <ListBox
+                    Grid.Row="1"
+                    VerticalAlignment="Top"
+                    Foreground="#E8DEF8"
+                    SelectedIndex="0">
+                    <ListBoxItem PreviewMouseLeftButtonDown="HomeClick">
+                        <StackPanel Margin="10,0,0,0">
+                            <materialDesign:PackIcon
+                                Width="50"
+                                Height="50"
+                                Foreground="WhiteSmoke"
+                                Kind="Home" />
+                            <TextBlock HorizontalAlignment="Center" Text="HOME" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem PreviewMouseLeftButtonDown="ConfigClick">
+
+                        <StackPanel Margin="10,0,0,0">
+                            <materialDesign:PackIcon
+                                Width="50"
+                                Height="50"
+                                Foreground="WhiteSmoke"
+                                Kind="Cog" />
+                            <TextBlock HorizontalAlignment="Center" Text="SETTING" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem PreviewMouseLeftButtonDown="DBClick">
+                        <StackPanel Margin="10,0,0,0">
+                            <materialDesign:PackIcon
+                                Width="50"
+                                Height="50"
+                                Foreground="WhiteSmoke"
+                                Kind="DatabaseCog" />
+                            <TextBlock HorizontalAlignment="Center" Text="DATABASE" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem PreviewMouseLeftButtonDown="AbClick">
+                        <StackPanel Margin="10,0,0,0">
+                            <materialDesign:PackIcon
+                                Width="50"
+                                Height="50"
+                                Foreground="WhiteSmoke"
+                                Kind="Information" />
+                            <TextBlock HorizontalAlignment="Center" Text="ABOUT" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+
+                    <ListBoxItem PreviewMouseLeftButtonDown="ExitAppClick">
+                        <StackPanel Margin="10,0,0,0">
+                            <materialDesign:PackIcon
+                                Width="50"
+                                Height="50"
+                                Foreground="WhiteSmoke"
+                                Kind="Power" />
+                            <TextBlock HorizontalAlignment="Center" Text="EXIT" />
+                        </StackPanel>
+                    </ListBoxItem>
+                </ListBox>
+            </Grid>
+            <Grid x:Name="GridContent" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+                <Grid x:Name="GridHeader" Background="#00B0ED">
+                    <TextBlock
+                        x:Name="TextBlockTitle"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontFamily="ARIAL"
+                        FontSize="25"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        Text="R - CENTRALIZED VERIFICATION MANAGEMENT" />
+
+                </Grid>
+                <Grid
+                    x:Name="GridBody"
+                    Grid.Row="1"
+                    Background="Azure">
+
+                    <!--  CURRENT STATION  -->
+                    <Grid x:Name="GridHome" Visibility="{Binding TabIndex, Converter={StaticResource OptToVis}, ConverterParameter=0, FallbackValue=Visible}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.3*" />
+                            <ColumnDefinition Width="3*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid
+                            x:Name="GridControlTab"
+                            Margin="5"
+                            Background="Transparent">
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition />
+
+                            </Grid.RowDefinitions>
+                            <!--  SELECT DATABASE  -->
+                            <GroupBox
+                                Grid.Row="1"
+                                Margin="2"
+                                materialDesign:ElevationAssist.Elevation="Dp7"
+                                Style="{StaticResource MaterialDesignCardGroupBox}">
+                                <GroupBox.Resources>
+                                    <ResourceDictionary>
+                                        <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#00B0ED" />
+                                    </ResourceDictionary>
+                                </GroupBox.Resources>
+                                <GroupBox.Header>
+                                    <Grid Height="30">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="15"
+                                            FontWeight="Bold"
+                                            Foreground="White"
+                                            Text="JOB OVERVIEW" />
+                                    </Grid>
+                                </GroupBox.Header>
+                                <Grid x:Name="GridOverview">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1.5*" />
+                                        <RowDefinition Height="2*" />
+                                        <RowDefinition Height="1*" />
+
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Margin="0,20,0,0" Background="Transparent">
+                                        <Border
+                                            Width="350"
+                                            Height="auto"
+                                            BorderBrush="Gray"
+                                            BorderThickness="2"
+                                            CornerRadius="10"
+                                            Visibility="{Binding ImageVis}">
+                                            <!--<Image Source="{Binding ImgSrc}" Stretch="Fill" />-->
+                                            <Grid>
+                                                <wfi:WindowsFormsHost Name="CvsDisplayForm">
+                                                    <!--<wf:UserControl x:Name="CvsDisplay"/>-->
+                                                </wfi:WindowsFormsHost>
+                                            </Grid>
+                                        </Border>
+
+
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="1" Margin="0,30,0,0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*" />
+                                            <RowDefinition Height="4*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition Width="3*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid Background="Green" Visibility="{Binding SoftOnline, Converter={StaticResource OptToVis},ConverterParameter=1}">
+                                                <TextBlock
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="20"
+                                                    FontWeight="Bold"
+                                                    Foreground="White">
+                                                    ONLINE
+                                                </TextBlock>
+                                            </Grid>
+                                            <Grid Background="Red" Visibility="{Binding SoftOnline, Converter={StaticResource OptToVis},ConverterParameter=0}">
+                                                <TextBlock
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="20"
+                                                    FontWeight="Bold"
+                                                    Foreground="White">
+                                                    OFFLINE
+                                                </TextBlock>
+                                            </Grid>
+                                           
+                                            <TextBox Grid.Column="1" FontSize="15" HorizontalAlignment="Left" Margin="20 0 0 0"
+                                                    VerticalAlignment="Center" Text="{Binding CameraData}" />
+                                        </Grid>
+
+                                        <lvc:PieChart
+                                            Grid.Row="1"
+                                            Margin="10"
+                                            FontSize="20"
+                                            Hoverable="False"
+                                            LegendLocation="Bottom"
+                                            Series="{Binding SeriesCollection}" />
+
+                                    </Grid>
+
+
+                                    <Grid Grid.Row="2" Background="Transparent">
+                                        <Grid
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Bottom"
+                                            Background="Transparent">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Button
+                                                x:Name="BtnStart"
+                                                Width="120"
+                                                Height="120"
+                                                Margin="5,0,15,0"
+                                                Background="#FF0B981F"
+                                                Foreground="Wheat"
+                                                IsEnabled="{Binding StartEnable}"
+                                                Style="{StaticResource MaterialDesignIconForegroundButton}"
+                                                ToolTip="MaterialDesignIconForegroundButton">
+                                                <materialDesign:PackIcon
+                                                    Width="50"
+                                                    Height="50"
+                                                    Kind="Play" />
+                                            </Button>
+
+
+
+                                            <Button
+                                                x:Name="BtnStop"
+                                                Grid.Column="1"
+                                                Width="120"
+                                                Height="120"
+                                                Margin="5,0,15,0"
+                                                Background="#FFB12719"
+                                                Foreground="Wheat"
+                                                IsEnabled="{Binding StopEnable}"
+                                                Style="{StaticResource MaterialDesignIconForegroundButton}"
+                                                ToolTip="MaterialDesignIconForegroundButton">
+                                                <materialDesign:PackIcon
+                                                    Width="50"
+                                                    Height="50"
+                                                    Kind="Stop" />
+                                            </Button>
+
+
+
+                                            <Button
+                                                x:Name="BtnTrigger"
+                                                Grid.Column="2"
+                                                Width="120"
+                                                Height="120"
+                                                Margin="5,0,5,0"
+                                                Background="#FFCFAE13"
+                                                Foreground="Wheat"
+                                                IsEnabled="{Binding TriggerEnable}"
+                                                Style="{StaticResource MaterialDesignIconForegroundButton}"
+                                                ToolTip="MaterialDesignIconForegroundButton"
+                                                Visibility="Collapsed">
+                                                <materialDesign:PackIcon
+                                                    Width="50"
+                                                    Height="50"
+                                                    Kind="LightningBoltCircle" />
+                                            </Button>
+
+
+                                            <!--<TextBlock Text="{Binding Index}" />-->
+                                        </Grid>
+                                    </Grid>
+
+
+
+                                </Grid>
+                            </GroupBox>
+
+                        </Grid>
+                        <Grid
+                            x:Name="GridStation"
+                            Grid.Column="1"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4*" />
+                                <RowDefinition Height="2*" />
+                            </Grid.RowDefinitions>
+                            <local:UC_Station Margin="5" />
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="3*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition Height="3*" />
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        Content="CHECK DATA INFORMATION"
+                                        FontSize="30"
+                                        FontWeight="Bold" />
+                                    <Border
+                                        Grid.Row="1"
+                                        Margin="10"
+                                        BorderBrush="Green"
+                                        BorderThickness="1"
+                                        CornerRadius="5">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock
+                                                    Margin="10,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="30"
+                                                    FontWeight="Bold"
+                                                    Text="Database Name: " />
+                                                <TextBlock
+                                                    TextTrimming="CharacterEllipsis"
+                                                    Grid.Column="1"
+                                                    Margin="10,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="30"
+                                                    Text="{Binding DbName}" />
+                                            </Grid>
+                                            <Grid Grid.Row="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock
+                                                    Margin="10,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="30"
+                                                    FontWeight="Bold"
+                                                    Text="Field Count: " />
+                                                <TextBlock
+                                                    Grid.Column="1"
+                                                    Margin="10,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="30"
+                                                    Text="{Binding TotalRecordDb}" />
+                                            </Grid>
+                                            <Grid Grid.Row="2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock
+                                                    Margin="10,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="30"
+                                                    FontWeight="Bold"
+                                                    Text="Column Count: " />
+                                                <TextBlock
+                                                    Grid.Column="1"
+                                                    Margin="10,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="30"
+                                                    Text="{Binding ColumnCount}" />
+                                            </Grid>
+                                            <Grid Grid.Row="3">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock
+                                                    Margin="10,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="30"
+                                                    FontWeight="Bold"
+                                                    Text="File Type: " />
+                                                <TextBlock
+                                                    Grid.Column="1"
+                                                    Margin="10,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="30"
+                                                    Text=".csv" />
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition Height="3*" />
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        Content="CHECK DATA INFORMATION"
+                                        FontSize="30"
+                                        FontWeight="Bold" />
+                                    <Border
+                                        Grid.Row="1"
+                                        Margin="10"
+                                        BorderBrush="Green"
+                                        BorderThickness="1"
+                                        CornerRadius="5">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                               
+                                            </Grid.ColumnDefinitions>
+                                            <GroupBox
+                                                Margin="5,5,5,5"
+                                                materialDesign:ElevationAssist.Elevation="Dp7"
+                                                Style="{StaticResource MaterialDesignCardGroupBox}">
+                                                <GroupBox.Resources>
+                                                    <ResourceDictionary>
+                                                        <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#a87332" />
+                                                    </ResourceDictionary>
+                                                </GroupBox.Resources>
+                                                <GroupBox.Header>
+                                                    <TextBlock
+                                                        Height="25"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        FontSize="20"
+                                                        FontWeight="Bold"
+                                                        Foreground="White"
+                                                        Text="ERROR SIGNAL" />
+                                                </GroupBox.Header>
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="6*" />
+                                                        <RowDefinition Height="2*" />
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock
+                                                        x:Name="TextBlockGood"
+                                                        Grid.Row="0"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        FontSize="60"
+                                                        FontWeight="Bold"
+                                                        Foreground="{StaticResource PrimaryHueMidBrush}"
+                                                        Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
+                                                        Text="{Binding FailCount, FallbackValue=100000}" />
+                                                    <!--<Button
+                                                        x:Name="BtnDetailGood"
+                                                        Grid.Row="1"
+                                                        Width="30"
+                                                        Height="30"
+                                                        HorizontalAlignment="Right"
+                                                        VerticalAlignment="Bottom"
+                                                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                                        Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+                                                        ToolTip="MaterialDesignFloatingActionDarkButton">
+                                                        <materialDesign:PackIcon
+                                                            Width="30"
+                                                            Height="30"
+                                                            Kind="DotsHorizontal" />
+                                                        <Button.Resources>
+                                                            <ResourceDictionary>
+                                                                <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#fa2d2d" />
+                                                            </ResourceDictionary>
+                                                        </Button.Resources>
+                                                    </Button>-->
+                                                </Grid>
+
+                                            </GroupBox>
+                                            <!--<GroupBox
+                                                Grid.Column="2"
+                                                Margin="5,5,5,5"
+                                                materialDesign:ElevationAssist.Elevation="Dp7"
+                                                Style="{StaticResource MaterialDesignCardGroupBox}">
+                                                <GroupBox.Resources>
+                                                    <ResourceDictionary>
+                                                        <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#32a852" />
+                                                    </ResourceDictionary>
+                                                </GroupBox.Resources>
+                                                <GroupBox.Header>
+                                                    <TextBlock
+                                                        Height="25"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        FontSize="20"
+                                                        FontWeight="Bold"
+                                                        Foreground="White"
+                                                        Text="PRINTED PAGE" />
+                                                </GroupBox.Header>
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="6*" />
+                                                        <RowDefinition Height="2*" />
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock
+                                                        Grid.Row="0"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        FontSize="40"
+                                                        FontWeight="Bold"
+                                                        Foreground="{StaticResource PrimaryHueMidBrush}"
+                                                        Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
+                                                        Text="{Binding a, FallbackValue=Comming Soon...}" />
+                                                    <Button
+                                                        Grid.Row="1"
+                                                        Width="30"
+                                                        Height="30"
+                                                        HorizontalAlignment="Right"
+                                                        VerticalAlignment="Bottom"
+                                                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                                        Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+                                                        ToolTip="MaterialDesignFloatingActionDarkButton">
+                                                        <materialDesign:PackIcon
+                                                            Width="30"
+                                                            Height="30"
+                                                            Kind="DotsHorizontal" />
+                                                        <Button.Resources>
+                                                            <ResourceDictionary>
+                                                                <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#fa2d2d" />
+                                                            </ResourceDictionary>
+                                                        </Button.Resources>
+                                                    </Button>
+                                                </Grid>
+
+                                            </GroupBox>-->
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+
+
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <!--  CURRENT JOB  -->
+
+                    <Grid x:Name="GridJob" Visibility="{Binding TabIndex, Converter={StaticResource OptToVis}, ConverterParameter=1, FallbackValue=Collapsed}">
+                        <local:UC_Settings />
+                    </Grid>
+
+
+
+
+                    <Grid
+                        x:Name="GridDB"
+                        Margin="10,10,10,10"
+                        Visibility="{Binding TabIndex, Converter={StaticResource OptToVis}, ConverterParameter=2, FallbackValue=Collapsed}">
+                        <local:UC_Database />
+                    </Grid>
+
+
+                </Grid>
+
+                <!--  Footer  -->
+                <Grid
+                    x:Name="GridFooter"
+                    Grid.Row="2"
+                    Background="#a4ba8c">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <ScrollViewer
+                        x:Name="ScrollViewerStatus"
+                        HorizontalScrollBarVisibility="Hidden"
+                        PanningMode="HorizontalOnly"
+                        VerticalScrollBarVisibility="Hidden">
+                        <StackPanel x:Name="StackPanelStatus" Orientation="Horizontal" />
+
+                    </ScrollViewer>
+                    <TextBlock
+                        Grid.Column="1"
+                        Margin="0,0,10,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        FontSize="12"
+                        FontWeight="Bold"
+                        Foreground="Bisque"
+                        Text="Verion 1.0 - Powered by MyLanGroup 2023" />
+
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

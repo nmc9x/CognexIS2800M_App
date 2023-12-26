@@ -1,0 +1,13 @@
+C:\Users\minhchau.nguyen\Desktop\ST_App\OCR_Camera_Printer\SDK\Cognex.InSight.Web\bin\Release\net48\Cognex.InSight.Web.dll
+C:\Users\minhchau.nguyen\Desktop\ST_App\OCR_Camera_Printer\SDK\Cognex.InSight.Web\bin\Release\net48\Cognex.InSight.Web.pdb
+C:\Users\minhchau.nguyen\Desktop\ST_App\OCR_Camera_Printer\SDK\Cognex.InSight.Web\bin\Release\net48\Newtonsoft.Json.dll
+C:\Users\minhchau.nguyen\Desktop\ST_App\OCR_Camera_Printer\SDK\Cognex.InSight.Web\bin\Release\net48\websocket-sharp-standard.dll
+C:\Users\minhchau.nguyen\Desktop\ST_App\OCR_Camera_Printer\SDK\Cognex.InSight.Web\bin\Release\net48\Newtonsoft.Json.xml
+C:\Users\minhchau.nguyen\Desktop\ST_App\OCR_Camera_Printer\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.csproj.AssemblyReference.cache
+C:\Users\minhchau.nguyen\Desktop\ST_App\OCR_Camera_Printer\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\minhchau.nguyen\Desktop\ST_App\OCR_Camera_Printer\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.AssemblyInfoInputs.cache
+C:\Users\minhchau.nguyen\Desktop\ST_App\OCR_Camera_Printer\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.AssemblyInfo.cs
+C:\Users\minhchau.nguyen\Desktop\ST_App\OCR_Camera_Printer\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.csproj.CoreCompileInputs.cache
+C:\Users\minhchau.nguyen\Desktop\ST_App\OCR_Camera_Printer\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.csproj.CopyComplete
+C:\Users\minhchau.nguyen\Desktop\ST_App\OCR_Camera_Printer\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.dll
+C:\Users\minhchau.nguyen\Desktop\ST_App\OCR_Camera_Printer\SDK\Cognex.InSight.Web\obj\Release\net48\Cognex.InSight.Web.pdb
